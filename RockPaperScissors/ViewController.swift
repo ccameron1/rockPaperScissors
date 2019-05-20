@@ -119,7 +119,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onRulesPressed(_ sender: UIButton) {
-        UIApplication.shared.openURL(NSURL(string: "http://www.wrpsa.com/the-official-rules-of-rock-paper-scissors/") as! URL)
+        UIApplication.shared.openURL(NSURL(string: "http://www.wrpsa.com/the-official-rules-of-rock-paper-scissors/")! as URL)
     }
     
     @IBAction func timerStartButtonPressed(_ sender: UIButton) {
