@@ -55,6 +55,7 @@
                     <navigationItem key="navigationItem" id="xZc-Jc-WYu"/>
                     <connections>
                         <outlet property="imageViewStack" destination="nwh-Gc-QbO" id="zuG-OC-rvH"/>
+                        <outlet property="rockImageView" destination="EYz-Mt-dn8" id="Sbk-Ho-OUG"/>
                         <outletCollection property="imageViews" destination="EYz-Mt-dn8" collectionClass="NSMutableArray" id="Zg6-x2-Hdc"/>
                         <outletCollection property="imageViews" destination="PnM-Sw-k0n" collectionClass="NSMutableArray" id="TgL-aZ-2NO"/>
                         <outletCollection property="imageViews" destination="Gfb-Hg-wH0" collectionClass="NSMutableArray" id="wKw-8L-PXK"/>
