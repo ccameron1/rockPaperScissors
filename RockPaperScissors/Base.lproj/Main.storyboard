@@ -55,6 +55,9 @@
                     <navigationItem key="navigationItem" id="xZc-Jc-WYu"/>
                     <connections>
                         <outlet property="imageViewStack" destination="nwh-Gc-QbO" id="zuG-OC-rvH"/>
+                        <outlet property="paperImageView" destination="PnM-Sw-k0n" id="Mhg-lc-woe"/>
+                        <outlet property="rockImageView" destination="EYz-Mt-dn8" id="TPB-2J-px0"/>
+                        <outlet property="scissorsImageView" destination="Gfb-Hg-wH0" id="emV-TI-weO"/>
                         <outletCollection property="imageViews" destination="EYz-Mt-dn8" collectionClass="NSMutableArray" id="Zg6-x2-Hdc"/>
                         <outletCollection property="imageViews" destination="PnM-Sw-k0n" collectionClass="NSMutableArray" id="TgL-aZ-2NO"/>
                         <outletCollection property="imageViews" destination="Gfb-Hg-wH0" collectionClass="NSMutableArray" id="wKw-8L-PXK"/>
@@ -77,6 +80,15 @@
                     <view key="view" contentMode="scaleToFill" id="SIx-zz-HwE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDB-su-gdY">
+                                <rect key="frame" x="103" y="126" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="7ep-8t-Uua"/>
                     </view>

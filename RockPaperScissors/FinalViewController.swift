@@ -10,10 +10,17 @@ import UIKit
 
 class FinalViewController: UIViewController {
 
+    var choiceString = ""
+    var computerChoices = ["Rock", "Paper", "Scissors"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let randomNum = CGFloat.random(in: 0...2)
+        let computerChoice = computerChoices[Int(randomNum)]
+        print("computer Choice is \(computerChoice)")
+        
+        print ("player choice is \(choiceString)")
     }
     
 

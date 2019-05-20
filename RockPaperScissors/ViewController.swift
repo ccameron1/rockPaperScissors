@@ -11,8 +11,12 @@ import UIKit
 class ViewController: UIViewController {
 
     var choice : UIImageView?
+    var choiceString = ""
     @IBOutlet weak var imageViewStack: UIStackView!
     @IBOutlet var imageViews: [UIImageView]!
+    @IBOutlet weak var rockImageView: UIImageView!
+    @IBOutlet weak var paperImageView: UIImageView!
+    @IBOutlet weak var scissorsImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +31,7 @@ class ViewController: UIViewController {
      // Get the new view controller using segue.destination.
      // Pass the selected object to the new view controller.
         let fvc = segue.destination as! FinalViewController
+        fvc.choiceString = choiceString
      }
     
     @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
@@ -38,7 +43,19 @@ class ViewController: UIViewController {
                 
             }
         }
-        print(choice)
+        
+        switch choice{
+        case rockImageView:
+            choiceString = ("Rock")
+        case paperImageView:
+            choiceString = ("Paper")
+        case scissorsImageView:
+            choiceString = ("Scissors")
+        default:
+            break
+        }
+        
+        performSegue(withIdentifier: "viewToFinalSegue", sender: nil)
         
     }
     
