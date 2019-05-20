@@ -18,27 +18,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose One" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICg-3m-xBp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose One" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICg-3m-xBp">
                                 <rect key="frame" x="113" y="141" width="188" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nwh-Gc-QbO">
-                                <rect key="frame" x="-93" y="212" width="600" height="620"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nwh-Gc-QbO">
+                                <rect key="frame" x="-93" y="212" width="600" height="470"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rock" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EYz-Mt-dn8">
-                                        <rect key="frame" x="150" y="0.0" width="300" height="200"/>
+                                        <rect key="frame" x="150" y="0.0" width="300" height="150"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="7oN-J9-ELM"/>
+                                            <constraint firstAttribute="height" constant="150" id="7oN-J9-ELM"/>
                                             <constraint firstAttribute="width" constant="300" id="DVt-QJ-DV8"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paper" translatesAutoresizingMaskIntoConstraints="NO" id="PnM-Sw-k0n">
-                                        <rect key="frame" x="166.5" y="210" width="267" height="200"/>
+                                        <rect key="frame" x="166.5" y="160" width="267" height="150"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scissors" translatesAutoresizingMaskIntoConstraints="NO" id="Gfb-Hg-wH0">
-                                        <rect key="frame" x="0.0" y="420" width="600" height="200"/>
+                                        <rect key="frame" x="0.0" y="320" width="600" height="150"/>
                                     </imageView>
                                 </subviews>
                                 <gestureRecognizers/>
@@ -55,18 +57,24 @@
                                     <action selector="onRulesPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DPr-Um-I6L"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNL-rd-joY">
+                                <rect key="frame" x="136" y="790" width="142" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Start Timer"/>
+                                <connections>
+                                    <action selector="timerStartButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GUe-OI-10m"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQv-So-Goi">
+                                <rect key="frame" x="191" y="735" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="ICg-3m-xBp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="53" id="2Qj-Q6-Mzv"/>
-                            <constraint firstItem="ICg-3m-xBp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="113" id="2i5-nC-Izq"/>
-                            <constraint firstItem="nwh-Gc-QbO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-93" id="BHL-6u-hKH"/>
-                            <constraint firstItem="nwh-Gc-QbO" firstAttribute="top" secondItem="ICg-3m-xBp" secondAttribute="bottom" constant="29" id="NdV-x1-Mul"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ICg-3m-xBp" secondAttribute="trailing" constant="113" id="Qio-bJ-D8u"/>
-                            <constraint firstItem="nwh-Gc-QbO" firstAttribute="top" secondItem="ICg-3m-xBp" secondAttribute="bottom" constant="29" id="crW-WK-XN6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nwh-Gc-QbO" secondAttribute="bottom" constant="30" id="ySW-WF-lJf"/>
-                            <constraint firstAttribute="trailing" secondItem="nwh-Gc-QbO" secondAttribute="trailing" constant="-93" id="ytd-Rw-dEY"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="xZc-Jc-WYu"/>
@@ -75,6 +83,7 @@
                         <outlet property="paperImageView" destination="PnM-Sw-k0n" id="Mhg-lc-woe"/>
                         <outlet property="rockImageView" destination="EYz-Mt-dn8" id="TPB-2J-px0"/>
                         <outlet property="scissorsImageView" destination="Gfb-Hg-wH0" id="emV-TI-weO"/>
+                        <outlet property="timerLabel" destination="HQv-So-Goi" id="Gi3-GB-RJx"/>
                         <outlet property="webButton" destination="1mo-MV-DVK" id="Ztm-HF-Q2V"/>
                         <outletCollection property="imageViews" destination="EYz-Mt-dn8" collectionClass="NSMutableArray" id="Zg6-x2-Hdc"/>
                         <outletCollection property="imageViews" destination="PnM-Sw-k0n" collectionClass="NSMutableArray" id="TgL-aZ-2NO"/>
