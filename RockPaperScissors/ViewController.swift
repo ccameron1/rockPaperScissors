@@ -30,11 +30,35 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUpGestureRecognizer()
         
     }
 
     
+    override func viewDidAppear(_ animated: Bool) {
+        imageViewStack.isUserInteractionEnabled = false
+    }
+    
+    func setUpGestureRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
+        tap.numberOfTapsRequired = 2
+        rockImageView.addGestureRecognizer(tap)
+        rockImageView.isUserInteractionEnabled = true
+        
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
+        tap.numberOfTapsRequired = 2
+        paperImageView.addGestureRecognizer(tap)
+        paperImageView.isUserInteractionEnabled = true
+        
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
+        tap.numberOfTapsRequired = 2
+        scissorsImageView.addGestureRecognizer(tap)
+        scissorsImageView.isUserInteractionEnabled = true
+    }
+    
+    @IBAction func doubleTap(_ sender: UIGestureRecognizer) {
+        print("double")
+    }
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -77,10 +101,12 @@ class ViewController: UIViewController {
     
     @IBAction func timerStartButtonPressed(_ sender: UIButton) {
     
-        self.timerButton.isEnabled = false
+        
         
         var runCount = 4
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            self.imageViewStack.isUserInteractionEnabled = true
+            self.timerButton.isEnabled = false
             runCount -= 1
             self.changeTimerLabel(string: "\(runCount)")
             if runCount == 0 {
@@ -90,6 +116,7 @@ class ViewController: UIViewController {
                     runCount = 3
                     self.timerLabel.text = "3"
                     self.timerButton.isEnabled = true
+                    self.imageViewStack.isUserInteractionEnabled = false
                 })
                 alertController.addAction(alertAction)
                 self.present(alertController, animated: true)
@@ -101,5 +128,7 @@ class ViewController: UIViewController {
     @objc func changeTimerLabel(string : String) {
         timerLabel.text = String(string)
     }
+    
+    
 }
 
