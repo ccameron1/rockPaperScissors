@@ -8,7 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        //ignore
+    }
+
+    
+     var imagePicker: ImagePicker!
+    
 
     var choice : UIImageView?
     var choiceString = ""
@@ -34,6 +41,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setUpGestureRecognizer()
         
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
+    }
+    
+    @IBAction func showImagePicker(_ sender: UIImageView) {
+        self.imagePicker.present(from: sender)
     }
 
     
@@ -61,18 +74,23 @@ class ViewController: UIViewController {
     @IBAction func doubleTap(_ sender: UIGestureRecognizer) {
         print("double")
         //add image code here
-        
+        showImagePicker(rockImageView)
+        //need to set image
         
     }
     
     @IBAction func doubleTap2(_ sender: UIGestureRecognizer) {
         print("double")
         //add image code here
+        showImagePicker(paperImageView)
+        //need to set image
     }
     
     @IBAction func doubleTap3(_ sender: UIGestureRecognizer) {
         print("double")
         //add image code here
+        showImagePicker(scissorsImageView)
+        //need to set image
     }
     
      // MARK: - Navigation
