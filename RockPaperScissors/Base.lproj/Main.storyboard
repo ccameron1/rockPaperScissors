@@ -66,10 +66,10 @@
                                     <action selector="timerStartButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GUe-OI-10m"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQv-So-Goi">
-                                <rect key="frame" x="191" y="735" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQv-So-Goi">
+                                <rect key="frame" x="200" y="739" width="15" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -83,6 +83,7 @@
                         <outlet property="paperImageView" destination="PnM-Sw-k0n" id="Mhg-lc-woe"/>
                         <outlet property="rockImageView" destination="EYz-Mt-dn8" id="TPB-2J-px0"/>
                         <outlet property="scissorsImageView" destination="Gfb-Hg-wH0" id="emV-TI-weO"/>
+                        <outlet property="timerButton" destination="eNL-rd-joY" id="bFV-eZ-IM9"/>
                         <outlet property="timerLabel" destination="HQv-So-Goi" id="Gi3-GB-RJx"/>
                         <outlet property="webButton" destination="1mo-MV-DVK" id="Ztm-HF-Q2V"/>
                         <outletCollection property="imageViews" destination="EYz-Mt-dn8" collectionClass="NSMutableArray" id="Zg6-x2-Hdc"/>

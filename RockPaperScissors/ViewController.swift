@@ -19,13 +19,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var scissorsImageView: UIImageView!
     @IBOutlet weak var webButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var timerButton: UIButton!
     
+//    let timeArray = ["3","2","1","0"]
+    var counter = 0
     
     var time = 3
     
+    var timer : Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         
     }
@@ -62,6 +66,7 @@ class ViewController: UIViewController {
             break
         }
         
+        timer?.invalidate()
         performSegue(withIdentifier: "viewToFinalSegue", sender: nil)
         
     }
@@ -71,14 +76,30 @@ class ViewController: UIViewController {
     }
     
     @IBAction func timerStartButtonPressed(_ sender: UIButton) {
+    
+        self.timerButton.isEnabled = false
         
-        let timeOne = Date().addingTimeInterval(1)
-        let timer = Timer(fireAt: timeOne, interval: 0, target: self, selector: #selector(changeTimerLabel), userInfo: nil, repeats: false)
-        RunLoop.main.add(timer, forMode: .common)
+        var runCount = 4
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            runCount -= 1
+            self.changeTimerLabel(string: "\(runCount)")
+            if runCount == 0 {
+                timer.invalidate()
+                let alertController = UIAlertController(title: "YOU LOSE", message: "Please select an image before the timer runs out.", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                    runCount = 3
+                    self.timerLabel.text = "3"
+                    self.timerButton.isEnabled = true
+                })
+                alertController.addAction(alertAction)
+                self.present(alertController, animated: true)
+            }
+        }
+        
     }
     
-    @objc func changeTimerLabel() {
-        timerLabel.text = String(time)
+    @objc func changeTimerLabel(string : String) {
+        timerLabel.text = String(string)
     }
 }
 
