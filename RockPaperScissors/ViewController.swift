@@ -8,15 +8,30 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController, ImagePickerDelegate {
+    
+    //function reads the image the user picker and switch statement decides where it goes.
+    var selectedImageView : UIImageView?
     func didSelect(image: UIImage?) {
-        //ignore
+        switch selectedImageView{
+        case rockImageView:
+            self.rockImageView.image = image
+        case paperImageView:
+            self.paperImageView.image = image
+        case scissorsImageView:
+            self.scissorsImageView.image = image
+        default:
+            break
+        }
     }
-
     
-     var imagePicker: ImagePicker!
     
-
+    var imagePicker: ImagePicker!
+    var imagePickerController : UIImagePickerController!
+    
+    
     var choice : UIImageView?
     var choiceString = ""
     @IBOutlet weak var imageViewStack: UIStackView!
@@ -28,7 +43,7 @@ class ViewController: UIViewController, ImagePickerDelegate {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var timerButton: UIButton!
     
-//    let timeArray = ["3","2","1","0"]
+    //    let timeArray = ["3","2","1","0"]
     var counter = 0
     
     var time = 3
@@ -40,20 +55,22 @@ class ViewController: UIViewController, ImagePickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpGestureRecognizer()
-        
+        //intializes image picker
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
     }
     
+    //function that will create and show image picker to user library
     @IBAction func showImagePicker(_ sender: UIImageView) {
         self.imagePicker.present(from: sender)
     }
-
+    
     
     override func viewDidAppear(_ animated: Bool) {
-        //imageViewStack.isUserInteractionEnabled = false
+        
     }
     
+    //sets up double taps for each image view
     func setUpGestureRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
         tap.numberOfTapsRequired = 2
@@ -71,42 +88,44 @@ class ViewController: UIViewController, ImagePickerDelegate {
         scissorsImageView.isUserInteractionEnabled = true
     }
     
+    //following function handle double taps and active an image selector
     @IBAction func doubleTap(_ sender: UIGestureRecognizer) {
         print("double")
+        selectedImageView = rockImageView
         //add image code here
         showImagePicker(rockImageView)
-        //need to set image
-        
     }
     
     @IBAction func doubleTap2(_ sender: UIGestureRecognizer) {
         print("double")
+        selectedImageView = paperImageView
         //add image code here
         showImagePicker(paperImageView)
-        //need to set image
     }
     
     @IBAction func doubleTap3(_ sender: UIGestureRecognizer) {
         print("double")
+        selectedImageView = scissorsImageView
         //add image code here
         showImagePicker(scissorsImageView)
-        //need to set image
     }
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
         let fvc = segue.destination as! FinalViewController
         fvc.choiceString = choiceString
-     }
+    }
     
     @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
         
+        //makes sure the the timer has been pressed before the user can play
         if hasTimeBeenPressed == true{
             
+            //reads where the user clicked
             let selectedLabel = sender.location(in: imageViewStack)
             for image in imageViews {
                 if image.frame.contains(selectedLabel) {
@@ -115,6 +134,7 @@ class ViewController: UIViewController, ImagePickerDelegate {
                 }
             }
             
+            //decides what has been selected
             switch choice{
             case rockImageView:
                 choiceString = ("rock")
@@ -139,13 +159,15 @@ class ViewController: UIViewController, ImagePickerDelegate {
     }
     
     @IBAction func onRulesPressed(_ sender: UIButton) {
+        //goes to the OFFICIAL RPS rules
         UIApplication.shared.openURL(NSURL(string: "http://www.wrpsa.com/the-official-rules-of-rock-paper-scissors/")! as URL)
     }
     
     @IBAction func timerStartButtonPressed(_ sender: UIButton) {
-    
+        
         hasTimeBeenPressed = true
         
+        //sets up the time to run for three seconds/
         var runCount = 4
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             //self.imageViewStack.isUserInteractionEnabled = true
@@ -154,6 +176,8 @@ class ViewController: UIViewController, ImagePickerDelegate {
             self.changeTimerLabel(string: "\(runCount)")
             if runCount == 0 {
                 timer.invalidate()
+                
+                //alert controller when the time runs out and no selection has happened
                 let alertController = UIAlertController(title: "YOU LOSE", message: "Please select an image before the timer runs out.", preferredStyle: .alert)
                 let alertAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
                     runCount = 3
@@ -172,17 +196,8 @@ class ViewController: UIViewController, ImagePickerDelegate {
         timerLabel.text = String(string)
     }
     
-    //who knows
-    func setUpImagePicker() {
-        
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        pickerController.allowsEditing = true
-        pickerController.mediaTypes = ["public.image", "public.movie"]
-        pickerController.sourceType = .photoLibrary
-        
-    }
-    
     
 }
+
+
 
