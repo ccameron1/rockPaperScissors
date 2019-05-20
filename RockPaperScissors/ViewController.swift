@@ -46,11 +46,11 @@ class ViewController: UIViewController {
         
         switch choice{
         case rockImageView:
-            choiceString = ("Rock")
+            choiceString = ("rock")
         case paperImageView:
-            choiceString = ("Paper")
+            choiceString = ("paper")
         case scissorsImageView:
-            choiceString = ("Scissors")
+            choiceString = ("scissors")
         default:
             break
         }
