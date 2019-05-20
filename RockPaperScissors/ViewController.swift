@@ -17,10 +17,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var rockImageView: UIImageView!
     @IBOutlet weak var paperImageView: UIImageView!
     @IBOutlet weak var scissorsImageView: UIImageView!
+    @IBOutlet weak var webButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
+        
     }
 
     
@@ -57,6 +60,10 @@ class ViewController: UIViewController {
         
         performSegue(withIdentifier: "viewToFinalSegue", sender: nil)
         
+    }
+    
+    @IBAction func onRulesPressed(_ sender: UIButton) {
+        UIApplication.shared.openURL(NSURL(string: "http://www.wrpsa.com/the-official-rules-of-rock-paper-scissors/") as! URL)
     }
     
 }
