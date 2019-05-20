@@ -61,6 +61,8 @@ class ViewController: UIViewController {
     @IBAction func doubleTap(_ sender: UIGestureRecognizer) {
         print("double")
         //add image code here
+        
+        
     }
     
     @IBAction func doubleTap2(_ sender: UIGestureRecognizer) {
@@ -150,6 +152,17 @@ class ViewController: UIViewController {
     
     @objc func changeTimerLabel(string : String) {
         timerLabel.text = String(string)
+    }
+    
+    //who knows
+    func setUpImagePicker() {
+        
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image", "public.movie"]
+        pickerController.sourceType = .photoLibrary
+        
     }
     
     
