@@ -28,6 +28,8 @@ class ViewController: UIViewController {
     
     var timer : Timer?
     
+    var hasTimeBeenPressed = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpGestureRecognizer()
@@ -36,7 +38,7 @@ class ViewController: UIViewController {
 
     
     override func viewDidAppear(_ animated: Bool) {
-        imageViewStack.isUserInteractionEnabled = false
+        //imageViewStack.isUserInteractionEnabled = false
     }
     
     func setUpGestureRecognizer() {
@@ -45,20 +47,32 @@ class ViewController: UIViewController {
         rockImageView.addGestureRecognizer(tap)
         rockImageView.isUserInteractionEnabled = true
         
-        let tap2 = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
-        tap.numberOfTapsRequired = 2
-        paperImageView.addGestureRecognizer(tap)
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(doubleTap2(_:)))
+        tap2.numberOfTapsRequired = 2
+        paperImageView.addGestureRecognizer(tap2)
         paperImageView.isUserInteractionEnabled = true
         
-        let tap3 = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
-        tap.numberOfTapsRequired = 2
-        scissorsImageView.addGestureRecognizer(tap)
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(doubleTap3(_:)))
+        tap3.numberOfTapsRequired = 2
+        scissorsImageView.addGestureRecognizer(tap3)
         scissorsImageView.isUserInteractionEnabled = true
     }
     
     @IBAction func doubleTap(_ sender: UIGestureRecognizer) {
         print("double")
+        //add image code here
     }
+    
+    @IBAction func doubleTap2(_ sender: UIGestureRecognizer) {
+        print("double")
+        //add image code here
+    }
+    
+    @IBAction func doubleTap3(_ sender: UIGestureRecognizer) {
+        print("double")
+        //add image code here
+    }
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -71,27 +85,36 @@ class ViewController: UIViewController {
     
     @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
         
-        let selectedLabel = sender.location(in: imageViewStack)
-        for image in imageViews {
-            if image.frame.contains(selectedLabel) {
-                choice = image
-                
+        if hasTimeBeenPressed == true{
+            
+            let selectedLabel = sender.location(in: imageViewStack)
+            for image in imageViews {
+                if image.frame.contains(selectedLabel) {
+                    choice = image
+                    
+                }
             }
+            
+            switch choice{
+            case rockImageView:
+                choiceString = ("rock")
+            case paperImageView:
+                choiceString = ("paper")
+            case scissorsImageView:
+                choiceString = ("scissors")
+            default:
+                break
+            }
+            
+            timer?.invalidate()
+            performSegue(withIdentifier: "viewToFinalSegue", sender: nil)
+            
+        } else {
+            print ("Timer hasn't been pressed yet")
         }
         
-        switch choice{
-        case rockImageView:
-            choiceString = ("rock")
-        case paperImageView:
-            choiceString = ("paper")
-        case scissorsImageView:
-            choiceString = ("scissors")
-        default:
-            break
-        }
         
-        timer?.invalidate()
-        performSegue(withIdentifier: "viewToFinalSegue", sender: nil)
+        
         
     }
     
@@ -101,11 +124,11 @@ class ViewController: UIViewController {
     
     @IBAction func timerStartButtonPressed(_ sender: UIButton) {
     
-        
+        hasTimeBeenPressed = true
         
         var runCount = 4
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            self.imageViewStack.isUserInteractionEnabled = true
+            //self.imageViewStack.isUserInteractionEnabled = true
             self.timerButton.isEnabled = false
             runCount -= 1
             self.changeTimerLabel(string: "\(runCount)")
@@ -116,7 +139,7 @@ class ViewController: UIViewController {
                     runCount = 3
                     self.timerLabel.text = "3"
                     self.timerButton.isEnabled = true
-                    self.imageViewStack.isUserInteractionEnabled = false
+                    //self.imageViewStack.isUserInteractionEnabled = false
                 })
                 alertController.addAction(alertAction)
                 self.present(alertController, animated: true)
