@@ -16,6 +16,9 @@ class FinalViewController: UIViewController {
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var computerImageView: UIImageView!
     @IBOutlet weak var winOrLossLabel: UILabel!
+    var rockImage : UIImage?
+    var paperImage : UIImage?
+    var scissorImage : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +37,28 @@ class FinalViewController: UIViewController {
 
     func loadImages() {
         
-        playerImageView.image = UIImage(named: choiceString)
-        computerImageView.image = UIImage(named: computerChoice!)
+        //uses new images to set up display
+        switch choiceString{
+        case "rock":
+            playerImageView.image = rockImage
+        case "paper":
+            playerImageView.image = paperImage
+        default:
+            playerImageView.image = scissorImage
+        }
+        
+        switch computerChoice{
+        case "rock":
+            computerImageView.image = rockImage
+        case "paper":
+            computerImageView.image = paperImage
+        default:
+            computerImageView.image = scissorImage
+        }
+        
+        //playerImageView.image = UIImage(named: choiceString)
+        //computerImageView.image = UIImage(named: computerChoice!)
+        
     }
     
     func determineWinOrLoss(){
@@ -68,5 +91,12 @@ class FinalViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func onTryAgainPressed(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "unwindToStartSegue", sender: nil)
+        
+    }
+    
 
 }

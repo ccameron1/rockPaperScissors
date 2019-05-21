@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 class ViewController: UIViewController, ImagePickerDelegate {
     
     //function reads the image the user picker and switch statement decides where it goes.
@@ -17,11 +16,14 @@ class ViewController: UIViewController, ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         switch selectedImageView{
         case rockImageView:
-            self.rockImageView.image = image
+            rockImage = image
+            self.rockImageView.image = rockImage
         case paperImageView:
-            self.paperImageView.image = image
+            paperImage = image
+            self.paperImageView.image = paperImage
         case scissorsImageView:
-            self.scissorsImageView.image = image
+            scissorImage = image
+            self.scissorsImageView.image = scissorImage
         default:
             break
         }
@@ -31,6 +33,9 @@ class ViewController: UIViewController, ImagePickerDelegate {
     var imagePicker: ImagePicker!
     var imagePickerController : UIImagePickerController!
     
+    var rockImage = UIImage(named: "rock")
+    var paperImage = UIImage(named: "paper")
+    var scissorImage = UIImage(named: "scissors")
     
     var choice : UIImageView?
     var choiceString = ""
@@ -118,6 +123,14 @@ class ViewController: UIViewController, ImagePickerDelegate {
         // Pass the selected object to the new view controller.
         let fvc = segue.destination as! FinalViewController
         fvc.choiceString = choiceString
+        fvc.paperImage = paperImage
+        fvc.rockImage = rockImage
+        fvc.scissorImage = scissorImage
+        
+        timerLabel.text = "3"
+        timerButton.isEnabled = true
+        hasTimeBeenPressed = false
+        
     }
     
     @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
@@ -192,10 +205,14 @@ class ViewController: UIViewController, ImagePickerDelegate {
         
     }
     
+    //changes timer as it counts down
     @objc func changeTimerLabel(string : String) {
         timerLabel.text = String(string)
     }
     
+    @IBAction func unwindToStart(segue: UIStoryboardSegue){
+        
+    }
     
 }
 
