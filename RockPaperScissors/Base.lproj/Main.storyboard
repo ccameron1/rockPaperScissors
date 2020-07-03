@@ -28,7 +28,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rMy-4u-fkZ">
                                         <rect key="frame" x="23.5" y="108" width="367" height="308"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-07-02 at 8.28.56 PM" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EYz-Mt-dn8">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rock" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EYz-Mt-dn8">
                                                 <rect key="frame" x="33.5" y="0.0" width="300" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="7oN-J9-ELM"/>
@@ -38,14 +38,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="UqS-Nd-RZv">
                                                 <rect key="frame" x="0.0" y="158" width="367" height="150"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-07-02 at 8.31.04 PM" translatesAutoresizingMaskIntoConstraints="NO" id="Gfb-Hg-wH0">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scissors" translatesAutoresizingMaskIntoConstraints="NO" id="Gfb-Hg-wH0">
                                                         <rect key="frame" x="0.0" y="0.0" width="175" height="150"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="Ufb-3e-ULc"/>
                                                             <constraint firstAttribute="width" constant="175" id="vOc-Kq-uqX"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-07-02 at 8.31.00 PM" translatesAutoresizingMaskIntoConstraints="NO" id="PnM-Sw-k0n">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paper" translatesAutoresizingMaskIntoConstraints="NO" id="PnM-Sw-k0n">
                                                         <rect key="frame" x="192" y="0.0" width="175" height="150"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="eZU-tY-7oq"/>
@@ -86,7 +86,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.9237448573" green="0.56316262480000001" blue="0.26264858250000001" alpha="0.74309717465753422" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.9237448573" green="0.56316262480000001" blue="0.26264858250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="2ya-nc-WEc" firstAttribute="top" secondItem="USM-G1-rIR" secondAttribute="top" constant="61" id="7Xd-KI-E8E"/>
                                             <constraint firstAttribute="bottom" secondItem="2ya-nc-WEc" secondAttribute="bottom" constant="90.5" id="RHS-G7-hKD"/>
@@ -116,6 +116,7 @@
                         <outlet property="scissorsImageView" destination="Gfb-Hg-wH0" id="emV-TI-weO"/>
                         <outlet property="timerButton" destination="eNL-rd-joY" id="bFV-eZ-IM9"/>
                         <outlet property="timerLabel" destination="HQv-So-Goi" id="Gi3-GB-RJx"/>
+                        <outlet property="view" destination="8bC-Xf-vdC" id="pdd-sb-vWl"/>
                         <outletCollection property="imageViews" destination="EYz-Mt-dn8" collectionClass="NSMutableArray" id="Zg6-x2-Hdc"/>
                         <outletCollection property="imageViews" destination="PnM-Sw-k0n" collectionClass="NSMutableArray" id="TgL-aZ-2NO"/>
                         <outletCollection property="imageViews" destination="Gfb-Hg-wH0" collectionClass="NSMutableArray" id="wKw-8L-PXK"/>
@@ -125,7 +126,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="pWI-VU-ehK">
                     <connections>
-                        <action selector="handleTap:" destination="BYZ-38-t0r" id="Qlw-ge-OCn"/>
+                        <action selector="handleTap:" destination="BYZ-38-t0r" id="e4T-nI-8XX"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -140,39 +141,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Choice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDB-su-gdY">
-                                <rect key="frame" x="56" y="160" width="93" height="21"/>
+                                <rect key="frame" x="26" y="243" width="132" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Computer Choice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVl-4L-rZQ">
-                                <rect key="frame" x="245" y="160" width="135" height="21"/>
+                                <rect key="frame" x="212" y="243" width="188" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Screen Shot 2020-07-02 at 8.28.56 PM" translatesAutoresizingMaskIntoConstraints="NO" id="ED8-vW-XPM">
-                                <rect key="frame" x="20" y="208" width="164" height="135"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rock" translatesAutoresizingMaskIntoConstraints="NO" id="ED8-vW-XPM">
+                                <rect key="frame" x="15" y="278" width="157" height="167"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ohg-ac-AHx">
-                                <rect key="frame" x="230" y="208" width="164" height="135"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="paper" translatesAutoresizingMaskIntoConstraints="NO" id="ohg-ac-AHx">
+                                <rect key="frame" x="225" y="278" width="163" height="167"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Win or Loss" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auw-nj-75h">
-                                <rect key="frame" x="162" y="426" width="90" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Win or Loss" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auw-nj-75h">
+                                <rect key="frame" x="0.0" y="545" width="414" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="backgroundColor" red="0.9237448573" green="0.56316262480000001" blue="0.26264858250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="45"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" red="0.9237448573" green="0.56316262480000001" blue="0.26264858250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="--- Results ---" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caz-jx-Cvd">
+                                <rect key="frame" x="20" y="105" width="374" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjA-D2-3pD">
-                                <rect key="frame" x="167" y="499" width="81" height="36"/>
+                                <rect key="frame" x="20" y="784" width="374" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Try Again"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Try Again">
+                                    <color key="titleColor" red="0.9237448573" green="0.56316262480000001" blue="0.26264858250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="onTryAgainPressed:" destination="1ye-Zo-OZi" eventType="touchUpInside" id="563-9s-xwW"/>
                                 </connections>
@@ -213,8 +224,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Screen Shot 2020-07-02 at 8.28.56 PM" width="408" height="389"/>
-        <image name="Screen Shot 2020-07-02 at 8.31.00 PM" width="421" height="402"/>
-        <image name="Screen Shot 2020-07-02 at 8.31.04 PM" width="406" height="389"/>
+        <image name="paper" width="421" height="402"/>
+        <image name="rock" width="408" height="389"/>
+        <image name="scissors" width="406" height="389"/>
     </resources>
 </document>

@@ -36,7 +36,7 @@ class ViewController: UIViewController, ImagePickerDelegate {
     var rockImage = UIImage(named: "rock")
     var paperImage = UIImage(named: "paper")
     var scissorImage = UIImage(named: "scissors")
-    
+
     var didChoose = false
     var choice : UIImageView?
     var choiceString = ""
@@ -93,10 +93,15 @@ class ViewController: UIViewController, ImagePickerDelegate {
         scissorsImageView.addGestureRecognizer(tap3)
         scissorsImageView.isUserInteractionEnabled = true
         
-        let tap4 = UITapGestureRecognizer(target: self, action: #selector(doubleTap4(_:)))
-        tap4.numberOfTapsRequired = 1
-        scissorsImageView.addGestureRecognizer(tap4)
-        scissorsImageView.isUserInteractionEnabled = true
+//        let tap4 = UITapGestureRecognizer(target: self, action: #selector(doubleTap4(_:)))
+//        tap4.numberOfTapsRequired = 1
+//        scissorsImageView.addGestureRecognizer(tap4)
+//        scissorsImageView.isUserInteractionEnabled = true
+        
+        let tapAll = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        tapAll.numberOfTapsRequired = 1
+        imageViewStack.addGestureRecognizer(tapAll)
+        imageViewStack.isUserInteractionEnabled = true
         
     }
     
@@ -122,17 +127,17 @@ class ViewController: UIViewController, ImagePickerDelegate {
         showImagePicker(scissorsImageView)
     }
     
-    @IBAction func doubleTap4(_ sender: UIGestureRecognizer) {
-        print("scissors")
-        selectedImageView = scissorsImageView
-        //add image code here
-        
-        if hasTimeBeenPressed == true {
-            self.didChoose = true
-            performSegue(withIdentifier: "viewToFinalSegue", sender: nil)
-        }
-        
-    }
+//    @IBAction func doubleTap4(_ sender: UIGestureRecognizer) {
+//        print("scissors single tap")
+//        selectedImageView = scissorsImageView
+//        //add image code here
+//
+//        if hasTimeBeenPressed == true {
+//            self.didChoose = true
+//            performSegue(withIdentifier: "viewToFinalSegue", sender: nil)
+//        }
+//
+//    }
     
     // MARK: - Navigation
     
@@ -153,12 +158,14 @@ class ViewController: UIViewController, ImagePickerDelegate {
     }
     
     @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
-        
+        print("made it")
         //makes sure the the timer has been pressed before the user can play
         if hasTimeBeenPressed == true{
             
             //reads where the user clicked
             let selectedLabel = sender.location(in: imageViewStack)
+            print("selecetd lable \(selectedLabel)")
+            
             for image in imageViews {
                 if image.frame.contains(selectedLabel) {
                     choice = image
@@ -167,7 +174,7 @@ class ViewController: UIViewController, ImagePickerDelegate {
             }
             
             //decides what has been selected
-            switch choice{
+            switch choice {
             case rockImageView:
                 choiceString = ("rock")
             case paperImageView:
@@ -182,11 +189,9 @@ class ViewController: UIViewController, ImagePickerDelegate {
             performSegue(withIdentifier: "viewToFinalSegue", sender: nil)
             
         } else {
+            //maybe pop a alert controller
             print ("Timer hasn't been pressed yet")
         }
-        
-        
-        
         
     }
     
@@ -210,7 +215,7 @@ class ViewController: UIViewController, ImagePickerDelegate {
                 timer.invalidate()
                 
                 //alert controller when the time runs out and no selection has happened
-                let alertController = UIAlertController(title: "YOU LOSE", message: "Please select an image before the timer runs out.", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Try Again", message: "Please select an image before the timer runs out.", preferredStyle: .alert)
                 let alertAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
                     runCount = 3
                     self.timerLabel.text = "3"

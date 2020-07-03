@@ -1,8 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "Screen Shot 2020-07-02 at 8.31.00 PM.png",
       "idiom" : "universal",
+      "filename" : "rock.jpg",
       "scale" : "1x"
     },
     {
@@ -15,7 +15,7 @@
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   }
 }
