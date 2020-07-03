@@ -37,6 +37,7 @@ class ViewController: UIViewController, ImagePickerDelegate {
     var paperImage = UIImage(named: "paper")
     var scissorImage = UIImage(named: "scissors")
     
+    var didChoose = false
     var choice : UIImageView?
     var choiceString = ""
     @IBOutlet weak var imageViewStack: UIStackView!
@@ -91,6 +92,12 @@ class ViewController: UIViewController, ImagePickerDelegate {
         tap3.numberOfTapsRequired = 2
         scissorsImageView.addGestureRecognizer(tap3)
         scissorsImageView.isUserInteractionEnabled = true
+        
+        let tap4 = UITapGestureRecognizer(target: self, action: #selector(doubleTap4(_:)))
+        tap4.numberOfTapsRequired = 1
+        scissorsImageView.addGestureRecognizer(tap4)
+        scissorsImageView.isUserInteractionEnabled = true
+        
     }
     
     //following function handle double taps and active an image selector
@@ -113,6 +120,18 @@ class ViewController: UIViewController, ImagePickerDelegate {
         selectedImageView = scissorsImageView
         //add image code here
         showImagePicker(scissorsImageView)
+    }
+    
+    @IBAction func doubleTap4(_ sender: UIGestureRecognizer) {
+        print("scissors")
+        selectedImageView = scissorsImageView
+        //add image code here
+        
+        if hasTimeBeenPressed == true {
+            self.didChoose = true
+            performSegue(withIdentifier: "viewToFinalSegue", sender: nil)
+        }
+        
     }
     
     // MARK: - Navigation
@@ -181,13 +200,13 @@ class ViewController: UIViewController, ImagePickerDelegate {
         hasTimeBeenPressed = true
         
         //sets up the time to run for three seconds/
-        var runCount = 4
+        var runCount = 3
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             //self.imageViewStack.isUserInteractionEnabled = true
             self.timerButton.isEnabled = false
             runCount -= 1
             self.changeTimerLabel(string: "\(runCount)")
-            if runCount == 0 {
+            if runCount == 0 && !self.didChoose{
                 timer.invalidate()
                 
                 //alert controller when the time runs out and no selection has happened
@@ -201,7 +220,13 @@ class ViewController: UIViewController, ImagePickerDelegate {
                 alertController.addAction(alertAction)
                 self.present(alertController, animated: true)
             }
+            
+            
         }
+        if runCount <= 0 {
+            timer?.invalidate()
+        }
+        self.didChoose = false
         
     }
     
