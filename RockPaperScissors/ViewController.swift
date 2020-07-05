@@ -14,7 +14,6 @@ class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControl
     
     //function reads the image the user picker and switch statement decides where it goes.
     var selectedImageView : UIImageView?
-    
     func didSelect(image: UIImage?) {
         switch selectedImageView{
         case rockImageView:
@@ -51,13 +50,9 @@ class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControl
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var timerButton: UIButton!
     
-    //    let timeArray = ["3","2","1","0"]
     var counter = 0
-    
     var time = 3
-    
     var timer : Timer?
-    
     var hasTimeBeenPressed = false
     
     override func viewDidLoad() {
@@ -95,11 +90,7 @@ class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControl
         scissorsImageView.addGestureRecognizer(tap3)
         scissorsImageView.isUserInteractionEnabled = true
         
-//        let tap4 = UITapGestureRecognizer(target: self, action: #selector(doubleTap4(_:)))
-//        tap4.numberOfTapsRequired = 1
-//        scissorsImageView.addGestureRecognizer(tap4)
-//        scissorsImageView.isUserInteractionEnabled = true
-        
+        //sets up the 3 images to allow tapgestures
         let tapAll = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         tapAll.numberOfTapsRequired = 1
         imageViewStack.addGestureRecognizer(tapAll)
@@ -107,41 +98,22 @@ class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControl
         
     }
     
-    //following function handle double taps and active an image selector
+    //following 3 functions handle double taps and active an image selector
     @IBAction func doubleTap(_ sender: UIGestureRecognizer) {
-        print("double")
         selectedImageView = rockImageView
-        //add image code here
         showImagePicker(rockImageView)
     }
     
     @IBAction func doubleTap2(_ sender: UIGestureRecognizer) {
-        print("double")
         selectedImageView = paperImageView
-        //add image code here
         showImagePicker(paperImageView)
     }
     
     @IBAction func doubleTap3(_ sender: UIGestureRecognizer) {
-        print("double")
         selectedImageView = scissorsImageView
-        //add image code here
         showImagePicker(scissorsImageView)
     }
-    
-//    @IBAction func doubleTap4(_ sender: UIGestureRecognizer) {
-//        print("scissors single tap")
-//        selectedImageView = scissorsImageView
-//        //add image code here
-//
-//        if hasTimeBeenPressed == true {
-//            self.didChoose = true
-//            performSegue(withIdentifier: "viewToFinalSegue", sender: nil)
-//        }
-//
-//    }
-    
-    // MARK: - Navigation
+
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -153,20 +125,21 @@ class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControl
         fvc.rockImage = rockImage
         fvc.scissorImage = scissorImage
         
+        //reset the timer button and label
         timerLabel.text = "3"
         timerButton.isEnabled = true
         hasTimeBeenPressed = false
         
     }
     
+    //this function is for the rock paper and scissors images
     @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
-        print("made it")
+        
         //makes sure the the timer has been pressed before the user can play
         if hasTimeBeenPressed == true {
             
-            //reads where the user clicked
+            //reads where the user clicked within the stackview
             let selectedLabel = sender.location(in: imageViewStack)
-            print("selecetd lable \(selectedLabel)")
             
             for image in imageViews {
                 if image.frame.contains(selectedLabel) {
@@ -187,12 +160,22 @@ class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControl
                 break
             }
             
+            //go to the results page
             timer?.invalidate()
             performSegue(withIdentifier: "viewToFinalSegue", sender: nil)
             
         } else {
-            //maybe pop a alert controller
-            print ("Timer hasn't been pressed yet")
+            //alert controller when the user has not started the timer yet but tries to select an image
+            let alertController = UIAlertController(title: "Try Again", message: "Please start the timer before selecting.", preferredStyle: .alert)
+            //create the actions that the alert controller will do
+            let alertAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                //this is where you add any extra actions
+                print ("Timer hasn't been pressed yet")
+            })
+            alertController.addAction(alertAction)
+            //actually shows the alert controller
+            self.present(alertController, animated: true)
+
         }
         
     }
