@@ -107,7 +107,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="xZc-Jc-WYu">
-                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="FX7-dV-JhI"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="FX7-dV-JhI">
+                            <connections>
+                                <action selector="onRulesButtonPressed:" destination="BYZ-38-t0r" id="7Ue-Ru-VOv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imageViewStack" destination="rMy-4u-fkZ" id="K5E-Kw-EmG"/>

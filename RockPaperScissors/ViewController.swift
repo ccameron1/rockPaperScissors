@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SafariServices
 
 
-class ViewController: UIViewController, ImagePickerDelegate {
+class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControllerDelegate {
     
     //function reads the image the user picker and switch statement decides where it goes.
     var selectedImageView : UIImageView?
+    
     func didSelect(image: UIImage?) {
         switch selectedImageView{
         case rockImageView:
@@ -45,7 +47,7 @@ class ViewController: UIViewController, ImagePickerDelegate {
     @IBOutlet weak var rockImageView: UIImageView!
     @IBOutlet weak var paperImageView: UIImageView!
     @IBOutlet weak var scissorsImageView: UIImageView!
-    @IBOutlet weak var webButton: UIButton!
+   
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var timerButton: UIButton!
     
@@ -160,7 +162,7 @@ class ViewController: UIViewController, ImagePickerDelegate {
     @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
         print("made it")
         //makes sure the the timer has been pressed before the user can play
-        if hasTimeBeenPressed == true{
+        if hasTimeBeenPressed == true {
             
             //reads where the user clicked
             let selectedLabel = sender.location(in: imageViewStack)
@@ -195,10 +197,17 @@ class ViewController: UIViewController, ImagePickerDelegate {
         
     }
     
-    @IBAction func onRulesPressed(_ sender: UIButton) {
-        //goes to the OFFICIAL RPS rules
-        UIApplication.shared.openURL(NSURL(string: "http://www.wrpsa.com/the-official-rules-of-rock-paper-scissors/")! as URL)
+    
+    @IBAction func onRulesButtonPressed(_ sender: Any) {
+        
+        let link = URL(string: "http://www.wrpsa.com/the-official-rules-of-rock-paper-scissors/")
+        let sfvc = SFSafariViewController(url: link!)
+        sfvc.delegate = (self as! SFSafariViewControllerDelegate)
+        
+        present(sfvc, animated: true)
+        
     }
+    
     
     @IBAction func timerStartButtonPressed(_ sender: UIButton) {
         
