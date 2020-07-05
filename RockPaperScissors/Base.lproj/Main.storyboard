@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xl3-E5-yEd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xl3-E5-yEd">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,30 +26,30 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rMy-4u-fkZ">
-                                        <rect key="frame" x="23.5" y="108" width="367" height="308"/>
+                                        <rect key="frame" x="48.5" y="108" width="317" height="308"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rock" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EYz-Mt-dn8">
-                                                <rect key="frame" x="33.5" y="0.0" width="300" height="150"/>
+                                                <rect key="frame" x="83.5" y="0.0" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="7oN-J9-ELM"/>
-                                                    <constraint firstAttribute="width" constant="300" id="DVt-QJ-DV8"/>
+                                                    <constraint firstAttribute="width" constant="150" id="DVt-QJ-DV8"/>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="UqS-Nd-RZv">
-                                                <rect key="frame" x="0.0" y="158" width="367" height="150"/>
+                                                <rect key="frame" x="0.0" y="158" width="317" height="150"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scissors" translatesAutoresizingMaskIntoConstraints="NO" id="Gfb-Hg-wH0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="175" height="150"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="Ufb-3e-ULc"/>
-                                                            <constraint firstAttribute="width" constant="175" id="vOc-Kq-uqX"/>
+                                                            <constraint firstAttribute="width" constant="150" id="vOc-Kq-uqX"/>
                                                         </constraints>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paper" translatesAutoresizingMaskIntoConstraints="NO" id="PnM-Sw-k0n">
-                                                        <rect key="frame" x="192" y="0.0" width="175" height="150"/>
+                                                        <rect key="frame" x="167" y="0.0" width="150" height="150"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="eZU-tY-7oq"/>
-                                                            <constraint firstAttribute="width" constant="175" id="ns1-b6-uQf"/>
+                                                            <constraint firstAttribute="width" constant="150" id="ns1-b6-uQf"/>
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
@@ -118,6 +118,7 @@
                         <outlet property="paperImageView" destination="PnM-Sw-k0n" id="Mhg-lc-woe"/>
                         <outlet property="rockImageView" destination="EYz-Mt-dn8" id="TPB-2J-px0"/>
                         <outlet property="scissorsImageView" destination="Gfb-Hg-wH0" id="emV-TI-weO"/>
+                        <outlet property="spStackView" destination="UqS-Nd-RZv" id="fPp-sL-K5Z"/>
                         <outlet property="timerButton" destination="eNL-rd-joY" id="bFV-eZ-IM9"/>
                         <outlet property="timerLabel" destination="HQv-So-Goi" id="Gi3-GB-RJx"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="pdd-sb-vWl"/>

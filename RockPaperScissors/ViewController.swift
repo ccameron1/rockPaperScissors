@@ -46,7 +46,8 @@ class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControl
     @IBOutlet weak var rockImageView: UIImageView!
     @IBOutlet weak var paperImageView: UIImageView!
     @IBOutlet weak var scissorsImageView: UIImageView!
-   
+    @IBOutlet weak var spStackView: UIStackView!
+    
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var timerButton: UIButton!
     
@@ -141,10 +142,21 @@ class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControl
             //reads where the user clicked within the stackview
             let selectedLabel = sender.location(in: imageViewStack)
             
-            for image in imageViews {
-                if image.frame.contains(selectedLabel) {
-                    choice = image
-                    
+            if rockImageView.frame.contains(selectedLabel)
+            {
+                choice = rockImageView
+            }
+            if spStackView.frame.contains(selectedLabel)
+            {
+                let selectedTemp = sender.location(in: spStackView)
+                
+                if paperImageView.frame.contains(selectedTemp)
+                {
+                    choice = paperImageView
+                }
+                else
+                {
+                    choice = scissorsImageView
                 }
             }
             
