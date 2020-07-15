@@ -67,7 +67,7 @@ class FinalViewController: UIViewController {
 //        var tie = false
         
         if (computerChoice == choiceString){
-            winOrLossLabel.text = "It's a tie!"
+            winOrLossLabel.text = "It's a win!"
         } else if choiceString == "rock"{
             
             if computerChoice == "paper"{
