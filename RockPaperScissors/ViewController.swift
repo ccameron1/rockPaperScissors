@@ -31,8 +31,6 @@ class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControl
     }
     
     
-    var imagePicker: ImagePicker!
-    var imagePickerController : UIImagePickerController!
     
     var rockImage = UIImage(named: "rock")
     var paperImage = UIImage(named: "paper")
@@ -62,6 +60,9 @@ class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControl
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
     }
+    
+    var imagePicker: ImagePicker!
+    var imagePickerController : UIImagePickerController!
     
     //function that will create and show image picker to user library
     @IBAction func showImagePicker(_ sender: UIImageView) {
@@ -165,16 +166,16 @@ class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControl
             performSegue(withIdentifier: "viewToFinalSegue", sender: nil)
             
         } else {
-            //alert controller when the user has not started the timer yet but tries to select an image
-            let alertController = UIAlertController(title: "Try Again", message: "Please start the timer before selecting.", preferredStyle: .alert)
-            //create the actions that the alert controller will do
-            let alertAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
-                //this is where you add any extra actions
-                print ("Timer hasn't been pressed yet")
-            })
-            alertController.addAction(alertAction)
-            //actually shows the alert controller
-            self.present(alertController, animated: true)
+//            //alert controller when the user has not started the timer yet but tries to select an image
+//            let alertController = UIAlertController(title: "Try Again", message: "Please start the timer before selecting.", preferredStyle: .alert)
+//            //create the actions that the alert controller will do
+//            let alertAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+//                //this is where you add any extra actions
+//                print ("Timer hasn't been pressed yet")
+//            })
+//            alertController.addAction(alertAction)
+//            //actually shows the alert controller
+//            self.present(alertController, animated: true)
 
         }
         
@@ -208,6 +209,7 @@ class ViewController: UIViewController, ImagePickerDelegate, SFSafariViewControl
                 
                 //alert controller when the time runs out and no selection has happened
                 let alertController = UIAlertController(title: "Try Again", message: "Please select an image before the timer runs out.", preferredStyle: .alert)
+                
                 let alertAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
                     runCount = 3
                     self.timerLabel.text = "3"
